@@ -15,6 +15,9 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "ag-grid-vue3": "^34.3.1",
+    "axios": "^1.13.2",
+    "bootstrap": "^5.3.8",
     "pinia": "^3.0.3",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3"
