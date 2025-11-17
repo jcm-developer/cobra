@@ -33,12 +33,15 @@ Sistema completo de información de vuelos en tiempo real con frontend Vue 3 y b
 - **Vue Router** - Enrutamiento SPA
 - **Pinia** - State management oficial de Vue
 - **Vitest** - Framework de testing unitario
+- **Vue Test Utils** - Utilidades para testing de componentes
 
 ### Backend
 - **Node.js** - Entorno de ejecución JavaScript
 - **Express** - Framework web minimalista
 - **sql.js** - Base de datos SQLite en JavaScript puro
 - **CORS** - Middleware para habilitar cross-origin requests
+- **Jest** - Framework de testing
+- **Supertest** - Testing de APIs HTTP
 
 ## 📦 Instalación
 
@@ -87,19 +90,61 @@ npm run preview
 
 ## 🧪 Testing
 
-Ejecutar tests unitarios con Vitest:
-
+### Frontend (Vue 3 + Vitest)
 ```sh
+# Ejecutar todos los tests
 npm run test:unit
+
+# Modo watch (re-ejecuta automáticamente)
+npm run test:unit -- --watch
+
+# Con reporte de cobertura
+npm run test:unit -- --coverage
 ```
+
+**Tests implementados:**
+- ✅ 20 tests unitarios
+- ✅ Cobertura: 77%+ en componente principal
+- ✅ Todos los tests aprobados (100%)
+
+### Backend (Node.js + Jest)
+```sh
+cd backend
+
+# Ejecutar tests
+npm test
+
+# Modo watch
+npm run test:watch
+
+# Con reporte de cobertura
+npm run test:coverage
+```
+
+**Tests implementados:**
+- ✅ 16 tests de API endpoints
+- ✅ Validación completa de CRUD
+- ✅ Todos los tests aprobados (100%)
+
+### 📊 Resultados de Testing
+
+**Total:** 36 tests - 100% aprobados ✅
+
+Para más detalles, consulta:
+- [TEST_RESULTS_SUMMARY.md](./TEST_RESULTS_SUMMARY.md) - Resumen ejecutivo
+- [TEST_REPORT.md](./TEST_REPORT.md) - Informe detallado
+- [TESTING_GUIDE.md](./TESTING_GUIDE.md) - Guía universal de testing
 
 ## 📁 Estructura del Proyecto
 
 ```
 cobra/
 ├── backend/
+│   ├── __tests__/      # Tests del backend
+│   │   └── server.spec.js # 16 tests de API endpoints
 │   ├── server.js       # Servidor Express con API REST
 │   ├── database.js     # Configuración de SQLite
+│   ├── jest.config.js  # Configuración de Jest
 │   ├── package.json    # Dependencias del backend
 │   └── flights.db      # Base de datos (se crea automáticamente)
 ├── src/
@@ -110,12 +155,16 @@ cobra/
 │   │   └── counter.ts  # Store de ejemplo
 │   ├── views/          # Componentes de vistas
 │   │   └── Home.vue    # Vista principal con gestión de vuelos
-│   ├── __tests__/      # Tests unitarios
-│   │   └── App.spec.ts
+│   ├── __tests__/      # Tests unitarios del frontend
+│   │   ├── App.spec.ts # 2 tests de router
+│   │   └── Home.spec.ts # 18 tests de componente principal
 │   ├── App.vue         # Componente raíz con estilos globales
 │   └── main.ts         # Punto de entrada de la aplicación
 ├── public/             # Archivos públicos estáticos
 ├── index.html          # HTML principal
+├── TEST_REPORT.md      # Informe detallado de testing
+├── TEST_RESULTS_SUMMARY.md # Resumen ejecutivo de tests
+├── TESTING_GUIDE.md    # Guía universal de testing
 └── README.md           # Este archivo
 ```
 
@@ -174,7 +223,8 @@ Eliminar un vuelo
 | `npm run dev` | Inicia servidor de desarrollo con hot-reload |
 | `npm run build` | Compila para producción |
 | `npm run preview` | Vista previa de build de producción |
-| `npm run test:unit` | Ejecuta tests unitarios |
+| `npm run test:unit` | Ejecuta tests unitarios (20 tests) |
+| `npm run test:unit -- --coverage` | Tests con reporte de cobertura |
 | `npm run type-check` | Verificación de tipos TypeScript |
 
 ### Backend
@@ -182,6 +232,9 @@ Eliminar un vuelo
 |--------|-------------|
 | `npm start` | Inicia el servidor backend en puerto 3000 |
 | `npm run dev` | Inicia con modo watch (reinicio automático) |
+| `npm test` | Ejecuta tests de API (16 tests) |
+| `npm run test:watch` | Tests en modo watch |
+| `npm run test:coverage` | Tests con reporte de cobertura |
 
 ## 🎯 Funcionalidades Principales
 
