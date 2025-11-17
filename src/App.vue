@@ -17,11 +17,15 @@ import NavBar from './components/NavBar.vue';
 }
 
 body {
-  background-color: #37353E;
+  background-color: #37353E !important;
   color: #ffffff;
 }
 
 #app {
   min-height: 100vh;
+}
+
+h1, h3, label {
+  color: white !important;
 }
 </style>
